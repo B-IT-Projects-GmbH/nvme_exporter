@@ -1,0 +1,23 @@
+services:
+  nvme-exporter:
+    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    container_name: nvme-exporter
+    restart: unless-stopped
+    ports:
+      - "9900:9900"
+    environment:
+      - PORT=9900
+      - UPDATE_PERIOD=10
+      # - DEBUG=1  # Uncomment for verbose debug logging
+    # For real NVMe access - requires privileged mode and device access
+    privileged: true
+    volumes:
+      - /dev:/dev
+    # Uncomment the following for host network mode if needed
+    # network_mode: host
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9900/metrics')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
