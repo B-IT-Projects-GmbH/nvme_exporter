@@ -78,7 +78,7 @@ docker run -d \
   --privileged \
   -v /dev:/dev \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # With restart policy
 docker run -d \
@@ -87,7 +87,7 @@ docker run -d \
   --privileged \
   -v /dev:/dev \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Development and Testing:**
@@ -100,7 +100,7 @@ docker run -d \
   -p 9900:9900 \
   -e DEBUG=1 \
   -e UPDATE_PERIOD=5 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Simulation mode (no hardware required)
 docker run -d \
@@ -108,7 +108,7 @@ docker run -d \
   -p 9900:9900 \
   -e SIMULATION=1 \
   -e DEBUG=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ### 2. Advanced Docker Configurations
@@ -125,7 +125,7 @@ docker run -d \
   --memory="128m" \
   --memory-swap="256m" \
   -e UPDATE_PERIOD=60 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Custom Network:**
@@ -140,7 +140,7 @@ docker run -d \
   --privileged \
   -v /dev:/dev \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **With Logging Configuration:**
@@ -154,7 +154,7 @@ docker run -d \
   --log-driver json-file \
   --log-opt max-size=10m \
   --log-opt max-file=3 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ### 3. Multi-Container Setups
@@ -169,7 +169,7 @@ for i in {1..3}; do
     -v /dev:/dev \
     -p $((9900+i-1)):9900 \
     -e UPDATE_PERIOD=$((i*10)) \
-    ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 done
 ```
 
@@ -182,7 +182,7 @@ for i in {1..3}; do
     --privileged \
     -v /dev:/dev \
     -e UPDATE_PERIOD=30 \
-    ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 done
 
 # Simple nginx load balancer
@@ -203,7 +203,7 @@ version: '3.8'
 
 services:
   nvme-exporter:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     container_name: nvme-exporter
     privileged: true
     volumes:
@@ -266,7 +266,7 @@ version: '3.8'
 
 services:
   nvme-exporter:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     container_name: nvme-exporter
     privileged: true
     volumes:
@@ -349,7 +349,7 @@ docker run -d \
   -e UPDATE_PERIOD=5 \
   --cpus="1.0" \
   --memory="256m" \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Low-Impact Monitoring:**
@@ -363,7 +363,7 @@ docker run -d \
   -e UPDATE_PERIOD=300 \
   --cpus="0.1" \
   --memory="64m" \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ### 2. Security-Focused Configurations
@@ -377,7 +377,7 @@ docker run -d \
   --tmpfs /tmp \
   -v /dev:/dev:ro \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Specific Device Access:**
@@ -389,7 +389,7 @@ docker run -d \
   --device=/dev/nvme1 \
   --cap-add=SYS_ADMIN \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ### 3. Testing and Development Configurations
@@ -401,7 +401,7 @@ version: '3.8'
 
 services:
   nvme-sim-1:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     ports:
       - "9901:9900"
     environment:
@@ -410,7 +410,7 @@ services:
       - UPDATE_PERIOD=10
 
   nvme-sim-2:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     ports:
       - "9902:9900"
     environment:
@@ -419,7 +419,7 @@ services:
       - UPDATE_PERIOD=30
 
   nvme-sim-3:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     ports:
       - "9903:9900"
     environment:
@@ -436,9 +436,9 @@ services:
 echo "Starting test instances..."
 
 # Start multiple test instances
-docker run -d --name nvme-test-1 -p 9901:9900 -e SIMULATION=1 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
-docker run -d --name nvme-test-2 -p 9902:9900 -e SIMULATION=1 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
-docker run -d --name nvme-test-3 -p 9903:9900 -e SIMULATION=1 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+docker run -d --name nvme-test-1 -p 9901:9900 -e SIMULATION=1 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
+docker run -d --name nvme-test-2 -p 9902:9900 -e SIMULATION=1 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
+docker run -d --name nvme-test-3 -p 9903:9900 -e SIMULATION=1 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Wait for startup
 sleep 10
@@ -502,7 +502,7 @@ nvme_smart_log_power_on_hours / 24
 ```yaml
 # values.yaml for nvme-exporter helm chart
 image:
-  repository: ghcr.io/B-IT-Projects-GmbH/nvme_exporter
+  repository: ghcr.io/b-it-projects-gmbh/nvme_exporter
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -548,7 +548,7 @@ configMapGenerator:
 
 images:
   - name: nvme-exporter
-    newName: ghcr.io/B-IT-Projects-GmbH/nvme_exporter
+    newName: ghcr.io/b-it-projects-gmbh/nvme_exporter
     newTag: v1.0
 ```
 
@@ -627,7 +627,7 @@ docker run -d \
   -e DEBUG=0 \
   --log-driver syslog \
   --log-opt syslog-address=udp://log-server:514 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Staging Environment:**
@@ -642,7 +642,7 @@ docker run -d \
   -e DEBUG=1 \
   --log-driver json-file \
   --log-opt max-size=10m \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Development Environment:**
@@ -657,7 +657,7 @@ docker run -d \
   -e UPDATE_PERIOD=10 \
   -e DEBUG=1 \
   --entrypoint "python" \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest \
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest \
   nvme_exporter.py
 ```
 

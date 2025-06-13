@@ -24,7 +24,7 @@ docker run -d \
   --privileged \
   -v /dev:/dev \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Check metrics
 curl http://localhost:9900/metrics
@@ -41,7 +41,7 @@ docker run -d \
   --name nvme-sim \
   -p 9900:9900 \
   -e SIMULATION=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 > 📚 **Need more details?** See our comprehensive guides:
@@ -57,11 +57,11 @@ docker run -d \
 ```bash
 # Latest version
 docker run -d --privileged -v /dev:/dev -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Specific version  
 docker run -d --privileged -v /dev:/dev -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:v1.0
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:v1.0
 ```
 
 **Building from Source:**
@@ -108,15 +108,15 @@ python nvme_exporter.py -p 9900 -u 10
 ```bash
 # Production monitoring
 docker run -d --privileged -v /dev:/dev -p 9900:9900 \
-  -e UPDATE_PERIOD=30 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  -e UPDATE_PERIOD=30 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Development with debug
 docker run -d --privileged -v /dev:/dev -p 9900:9900 \
-  -e DEBUG=1 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  -e DEBUG=1 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Testing with simulation
 docker run -d -p 9900:9900 -e SIMULATION=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ## 📖 Documentation
@@ -141,7 +141,7 @@ For security-conscious deployments:
 ## Access URLs
 
 - **NVMe Exporter**: http://localhost:9900/metrics
-- **GitHub Container Registry**: https://ghcr.io/B-IT-Projects-GmbH/nvme_exporter
+- **GitHub Container Registry**: https://ghcr.io/b-it-projects-gmbh/nvme_exporter
 
 ## Acknowledgments
 

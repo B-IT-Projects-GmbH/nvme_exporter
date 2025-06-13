@@ -1,6 +1,6 @@
 services:
   nvme-exporter:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     container_name: nvme-exporter
     restart: unless-stopped
     ports:

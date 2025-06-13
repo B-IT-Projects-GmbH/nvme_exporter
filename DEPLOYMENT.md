@@ -99,7 +99,7 @@ docker run -d \
   -p 9900:9900 \
   -e DEBUG=1 \
   -e UPDATE_PERIOD=5 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Follow logs in real-time
 docker logs nvme-debug -f
@@ -115,7 +115,7 @@ docker run -d \
   -p 9900:9900 \
   -e SIMULATION=1 \
   -e DEBUG=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Check simulated metrics
 curl http://localhost:9900/metrics | grep nvme_smart_log_temperature
@@ -130,7 +130,7 @@ for i in {1..3}; do
     -p $((9900+i)):9900 \
     -e SIMULATION=1 \
     -e UPDATE_PERIOD=10 \
-    ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 done
 
 # Test all instances
@@ -152,7 +152,7 @@ docker run -d \
   -p 8080:8080 \
   -e PORT=8080 \
   -e UPDATE_PERIOD=5 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Resource-Constrained Environment:**
@@ -166,7 +166,7 @@ docker run -d \
   --cpus="0.5" \
   --memory="128m" \
   -e UPDATE_PERIOD=60 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ## Advanced Deployment
@@ -179,7 +179,7 @@ version: '3.8'
 
 services:
   nvme-exporter:
-    image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+    image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
     container_name: nvme-exporter-prod
     privileged: true
     volumes:
@@ -266,7 +266,7 @@ spec:
       hostPID: true
       containers:
       - name: nvme-exporter
-        image: ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+        image: ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
         ports:
         - containerPort: 9900
           hostPort: 9900
@@ -350,7 +350,7 @@ ExecStart=/usr/bin/docker run \
   -v /dev:/dev \
   -p 9900:9900 \
   -e UPDATE_PERIOD=30 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ExecStop=/usr/bin/docker stop nvme-exporter
 TimeoutStartSec=0
 TimeoutStopSec=30
@@ -412,7 +412,7 @@ docker run -d \
   --device=/dev/nvme0 \
   --device=/dev/nvme1 \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 **Read-Only Root Filesystem:**
@@ -424,7 +424,7 @@ docker run -d \
   --tmpfs /tmp \
   -v /dev:/dev:ro \
   -p 9900:9900 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ## Monitoring and Alerting

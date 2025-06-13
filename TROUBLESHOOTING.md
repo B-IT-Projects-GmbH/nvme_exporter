@@ -17,7 +17,7 @@ docker logs nvme-exporter --tail=20
 curl -s http://localhost:9900/metrics | head -10
 
 # Enable debug mode for detailed output
-docker run -e DEBUG=1 -e SIMULATION=1 -p 9900:9900 ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+docker run -e DEBUG=1 -e SIMULATION=1 -p 9900:9900 ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 ```
 
 ### Container Status Checks
@@ -155,7 +155,7 @@ docker run --memory="256m" --cpus="0.5" [other-options] [image]
 ```bash
 # Start container with debug shell
 docker run -it --privileged -v /dev:/dev --entrypoint /bin/sh \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Execute commands inside running container
 docker exec -it nvme-exporter /bin/sh
@@ -212,7 +212,7 @@ docker exec nvme-exporter python -c "import sys; print(sys.path)"
 ```bash
 # Use simulation mode for testing
 docker run -d -p 9900:9900 -e SIMULATION=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # For real monitoring, use native Linux or Windows monitoring tools
 ```
@@ -236,7 +236,7 @@ wsl --list --verbose
 ```bash
 # Use simulation mode
 docker run -d -p 9900:9900 -e SIMULATION=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # For development, connect to remote Linux systems
 ssh user@linux-host "docker run [options] nvme_exporter"
@@ -414,17 +414,17 @@ docker logs nvme-exporter 2>&1 | grep -i "device\|nvme\|found"
 # Test with minimal configuration
 docker run --rm -it --privileged -v /dev:/dev -p 9901:9900 \
   -e DEBUG=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Test with simulation mode
 docker run --rm -it -p 9902:9900 \
   -e SIMULATION=1 -e DEBUG=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest
 
 # Save debug output
 docker run --rm --privileged -v /dev:/dev -p 9903:9900 \
   -e DEBUG=1 \
-  ghcr.io/B-IT-Projects-GmbH/nvme_exporter:latest \
+  ghcr.io/b-it-projects-gmbh/nvme_exporter:latest \
   2>&1 | tee debug_output.log
 ```
 
